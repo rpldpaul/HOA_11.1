@@ -1,0 +1,17 @@
+---
+ - hosts: all
+   become: true
+   pre_tasks:
+
+   - name: Install Updates (Ubuntu)
+     tags: always
+     apt:
+       update_cache: yes
+     changed_when: false
+     when: ansible_distribution == "Ubuntu"
+
+
+ - hosts: Ubuntu
+   become: true
+   roles:
+     - Ubuntu
